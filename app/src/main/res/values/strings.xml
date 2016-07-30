@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">NavigationDrawerToolbar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_login_fragment">Enter your login credentials</string>
+    <string name="pinned_events_fragment">Welcome to the pinned events screen</string>
+    <string name="hello_loyalty_fragment">Welcome to the loyalty page</string>
+    <string name="hello_my_page_fragment">Welcome to my interests page</string>
+    <string name="hello_payment_fragment">Welcome to the payment page</string>
+    <string name="hello_schedule_fragment">Welcome to the schedule page</string>
+
+
+    <string-array name="navigation_drawer_items_array">
+        <item>Login/SignUp</item>
+        <item>My Page</item>
+        <item>Schedule</item>
+        <item>Pinned Events</item>
+        <item>Loyalty</item>
+        <item>Payment</item>
+    </string-array>
+</resources>
