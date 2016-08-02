@@ -1,7 +1,10 @@
 package com.example.jayasowmya.navigationdrawertoolbar;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,7 +19,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 
-
 public class MainActivity extends AppCompatActivity {
 
     private String[] mNavigationDrawerItemTitles;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     android.support.v7.app.ActionBarDrawerToggle mDrawerToggle;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +54,29 @@ public class MainActivity extends AppCompatActivity {
         drawerItem[3] = new DataModel(R.drawable.pinnedicon, "Pinned Events");
         drawerItem[4] = new DataModel(R.drawable.loyaltyicon, "Loyalty");
         drawerItem[5] = new DataModel(R.drawable.paymenticon, "Payment");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setHomeButtonEnabled(true);
 
         DrawerItemCustomAdaptor adapter = new DrawerItemCustomAdaptor(this, R.layout.list_view_item_row, drawerItem);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
         setupDrawerToggle();
 
+        if (mDrawerLayout != null) {
+            // Set a custom shadow that overlays the main content when the drawer opens
+            mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+            // Enable ActionBar app icon to behave as action to toggle nav drawer
+            getSupportActionBar().setHomeButtonEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
+        }
 
+        if (savedInstanceState == null) {
+            selectItem(0);
+        }
     }
+
+
+
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
 
@@ -99,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             default:
                 break;
         }
-        
+
 
 
         if (fragment != null) {
@@ -109,7 +124,11 @@ public class MainActivity extends AppCompatActivity {
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
             setTitle(mNavigationDrawerItemTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
+            int currOrientation = getResources().getConfiguration().orientation;
+            if(currOrientation == Configuration.ORIENTATION_PORTRAIT) {
+                mDrawerLayout.closeDrawer(mDrawerList);
+            }
+
 
         } else {
             Log.e("MainActivity", "Error in creating fragment");
@@ -150,4 +169,15 @@ public class MainActivity extends AppCompatActivity {
         mDrawerToggle.syncState();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int currOrientation = getResources().getConfiguration().orientation;
+        if(currOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN);
+        }
+        else{
+            mDrawerLayout.closeDrawer(mDrawerList);
+        }
+    }
 }

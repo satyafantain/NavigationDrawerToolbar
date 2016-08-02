@@ -18,4 +18,20 @@
         <item>Loyalty</item>
         <item>Payment</item>
     </string-array>
+
+    <string-array name="menuList_descriptions">
+        <item>Enter your login credentials</item>
+        <item>Welcome to my interests page</item>
+        <item>Schedule</item>
+        <item>Welcome to the pinned events screen</item>
+        <item>Loyalty</item>
+        <item>Payment</item>
+    </string-array>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>
