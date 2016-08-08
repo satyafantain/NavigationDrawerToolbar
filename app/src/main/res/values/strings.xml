@@ -11,6 +11,7 @@
 
 
     <string-array name="navigation_drawer_items_array">
+        <item>Home</item>
         <item>Login/SignUp</item>
         <item>My Page</item>
         <item>Schedule</item>
@@ -20,12 +21,24 @@
     </string-array>
 
     <string-array name="menuList_descriptions">
+        <item>HomeScreen</item>
         <item>Enter your login credentials</item>
         <item>Welcome to my interests page</item>
         <item>Schedule</item>
         <item>Welcome to the pinned events screen</item>
         <item>Loyalty</item>
         <item>Payment</item>
+    </string-array>
+
+    <string-array name="prgmNameList">
+        <item>"Delhi Dare Devils</item>
+        <item>Enrique</item>
+        <item>Illayaraja</item>
+        <item>Kolkata Knight Riders</item>
+        <item>RajniKanth</item>
+        <item>Royal Challengers Bengaluru</item>
+        <item>A.R.Rehman</item>
+        <item>SunRisers Hyderabad</item>
     </string-array>
 
 

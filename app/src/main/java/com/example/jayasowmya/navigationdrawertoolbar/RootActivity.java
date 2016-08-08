@@ -29,14 +29,16 @@ public class RootActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        DataModel[] drawerItem = new DataModel[6];
 
-        drawerItem[0] = new DataModel(R.drawable.loginicon, "Login");
-        drawerItem[1] = new DataModel(R.drawable.mypageicon, "My Page");
-        drawerItem[2] = new DataModel(R.drawable.scheduleicon, "Schedule");
-        drawerItem[3] = new DataModel(R.drawable.pinnedicon, "Pinned Events");
-        drawerItem[4] = new DataModel(R.drawable.loyaltyicon, "Loyalty");
-        drawerItem[5] = new DataModel(R.drawable.paymenticon, "Payment");
+        DataModel[] drawerItem = new DataModel[7];
+
+        drawerItem[0] = new DataModel(R.drawable.homeicon, "Home");
+        drawerItem[1] = new DataModel(R.drawable.loginicon, "Login");
+        drawerItem[2] = new DataModel(R.drawable.mypageicon, "My Page");
+        drawerItem[3] = new DataModel(R.drawable.scheduleicon, "Schedule");
+        drawerItem[4] = new DataModel(R.drawable.pinnedicon, "Pinned Events");
+        drawerItem[5] = new DataModel(R.drawable.loyaltyicon, "Loyalty");
+        drawerItem[6] = new DataModel(R.drawable.paymenticon, "Payment");
 
         DrawerItemCustomAdaptor adapter = new DrawerItemCustomAdaptor(this, R.layout.list_view_item_row, drawerItem);
         mDrawerList.setAdapter(adapter);
@@ -46,7 +48,7 @@ public class RootActivity extends AppCompatActivity {
 
         if (mDrawerLayout != null) {
             // Set a custom shadow that overlays the main content when the drawer opens
-            mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+            //mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
             // Enable ActionBar app icon to behave as action to toggle nav drawer
             getSupportActionBar().setHomeButtonEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -60,21 +62,24 @@ public class RootActivity extends AppCompatActivity {
 
         switch (position) {
             case 0:
-                fragment = new LoginFragment();
+                fragment = new HomeFragment();
                 break;
             case 1:
-                fragment = new MyPageFragment();
+                fragment = new LoginFragment();
                 break;
             case 2:
-                fragment = new ScheduleFragment();
+                fragment = new MyPageFragment();
                 break;
             case 3:
-                fragment = new EventsFragment();
+                fragment = new ScheduleFragment();
                 break;
             case 4:
-                fragment = new LoyaltyFragment();
+                fragment = new EventsFragment();
                 break;
             case 5:
+                fragment = new LoyaltyFragment();
+                break;
+            case 6:
                 fragment = new PaymentFragment();
                 break;
 
@@ -131,5 +136,7 @@ public class RootActivity extends AppCompatActivity {
             selectItem(position);
         }
     }
+
+
 
 }

@@ -17,7 +17,7 @@ public class MainActivity extends RootActivity {
         mTitle = mDrawerTitle = getTitle();
 
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-        tx.replace(R.id.content_frame, new LoginFragment());
+        tx.replace(R.id.content_frame, new HomeFragment());
         tx.commit();
 
         setupToolbar();
